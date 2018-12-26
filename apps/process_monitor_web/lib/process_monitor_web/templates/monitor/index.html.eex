@@ -1,0 +1,24 @@
+<div class="jumbotron">
+  <table class=table>
+  <thead>
+  <tr>
+  <th class="text-center">Pid</th>
+  <th class="text-center">Reductions</th>
+  <th class="text-center">Memory (kb)</th>
+  <th class="text-center">Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= for process <- @processes do %>
+  <tr class="text-center">
+    <td class="text-center"> <%= process.pid %></td>
+    <td class="text-center"> <%= process.reductions %></td>
+    <td class="text-center"> <%= process.memory %></td>
+    <td class="text-center"> <%= process.status %></td>
+    <td class="text-right"> <%= link "Kill Process",to: Routes.monitor_path(@conn,:kill,:erlang.list_to_bitstring process.pid), class: "btn" %></td>
+  </tr>
+  <% end %>
+  </tbody>
+  </table>
+</div>
+</div>
